@@ -27,11 +27,11 @@ func _process(delta):
 		input.x += 1
 	
 	if menu_parent is VBoxContainer:
-		set_cursor_from_index(abs((cursor_index + input.y) as int % nb_elements))
+		set_cursor_from_index(_correct_index((cursor_index + input.y) as int % nb_elements))
 	elif menu_parent is HBoxContainer:
-		set_cursor_from_index(abs((cursor_index + input.x) as int % nb_elements))
+		set_cursor_from_index(_correct_index((cursor_index + input.x) as int % nb_elements))
 	elif menu_parent is GridContainer:
-		set_cursor_from_index(abs((cursor_index + input.x + input.y * menu_parent.columns) as int % nb_elements))
+		set_cursor_from_index(_correct_index((cursor_index + input.x + input.y * menu_parent.columns) as int % nb_elements))
 	
 	if Input.is_action_just_pressed("ui_select"):
 		var current_menu_item := get_menu_item_at_index(cursor_index)
@@ -39,6 +39,12 @@ func _process(delta):
 		if current_menu_item != null:
 			if current_menu_item.has_method("cursor_select"):
 				current_menu_item.cursor_select()
+
+func _correct_index(index):
+	if index == -1:
+		return nb_elements -1
+	else:
+		return index
 
 func get_menu_item_at_index(index : int) -> Control:
 	if menu_parent == null:
@@ -50,6 +56,7 @@ func get_menu_item_at_index(index : int) -> Control:
 	return menu_parent.get_child(index) as Control
 
 func set_cursor_from_index(index : int) -> void:
+	print(index)
 	var menu_item := get_menu_item_at_index(index)
 	
 	set_cursor_for_menu_item(menu_item)

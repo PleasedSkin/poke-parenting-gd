@@ -17,43 +17,68 @@ patch_margin_top = 6
 patch_margin_right = 6
 patch_margin_bottom = 6
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="GridBoxContainer" type="GridContainer" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -573.5
-offset_top = -55.0
-offset_right = 573.5
-offset_bottom = 55.0
+offset_left = -90.0
+offset_top = -35.0
+offset_right = 90.0
+offset_bottom = 35.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 200
-alignment = 1
+theme_override_constants/h_separation = 40
+theme_override_constants/v_separation = 10
+columns = 2
 
-[node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer"]
+[node name="Respect" type="RichTextLabel" parent="GridBoxContainer"]
 custom_minimum_size = Vector2(70, 30)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 bbcode_enabled = true
-text = "[center]Attaque[/center]"
+text = "[center]Respect[/center]"
 script = ExtResource("2_xgaok")
+is_bonus = true
 
-[node name="RichTextLabel2" type="RichTextLabel" parent="HBoxContainer"]
+[node name="Repas" type="RichTextLabel" parent="GridBoxContainer"]
 custom_minimum_size = Vector2(70, 30)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 bbcode_enabled = true
-text = "[center]Défense[/center]"
+text = "[center]Repas[/center]"
 script = ExtResource("2_xgaok")
+is_malus = true
+
+[node name="Maitrise" type="RichTextLabel" parent="GridBoxContainer"]
+custom_minimum_size = Vector2(70, 30)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+bbcode_enabled = true
+text = "[center]Maîtrise[/center]"
+script = ExtResource("2_xgaok")
+is_malus = true
+
+[node name="Modèle" type="RichTextLabel" parent="GridBoxContainer"]
+custom_minimum_size = Vector2(70, 30)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+bbcode_enabled = true
+text = "[center]Modèle[/center]"
+script = ExtResource("2_xgaok")
+is_malus = true
 
 [node name="Cursor" parent="." instance=ExtResource("2_pwquh")]
 layout_mode = 0
-menu_parent_path = NodePath("../HBoxContainer")
+menu_parent_path = NodePath("../GridBoxContainer")
 cursor_offset = Vector2(-5, 0)

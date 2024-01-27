@@ -17,7 +17,7 @@ func _ready() -> void:
 	get_pokemon_request.request_completed.connect(_on_pokemon_request_completed)
 	get_pokemon_species_request.request_completed.connect(_on_pokemon_species_request_completed)
 	get_pokemon_pic_request.request_completed.connect(_on_pokemon_pic_request_completed)
-	_generate_random_pokemon()
+	#_generate_random_pokemon()
 
 func _generate_random_pokemon() -> void:
 	pokemon_number = rng.randi_range(1, 1025)
@@ -41,7 +41,7 @@ func _on_pokemon_pic_request_completed(result, response_code, headers, body):
 			print_debug("Erreur lors du chargement de l'image du pokémon " + str(pokemon_number))
 		else:
 			var texture = ImageTexture.create_from_image(image)
-			texture.set_size_override(Vector2i(300, 300))
+			texture.set_size_override(Vector2i(200, 200))
 			
 			texture_rect.texture = texture
 	else:
@@ -52,7 +52,7 @@ func _on_pokemon_species_request_completed(result, response_code, headers, body)
 	if response_code == HTTPClient.RESPONSE_OK:
 		var pokemon_species = JSON.parse_string(body.get_string_from_utf8())
 		var corresponding_item = pokemon_species["names"].filter(func(name): return name.language.name == "fr")[0]
-		pokemon_name_label.text = corresponding_item.name
+		pokemon_name_label.text = "[center]" + corresponding_item.name + "[/center]"
 	else:
 		print_debug("Erreur lors de la récupération des données d'espèce pokémon " + str(pokemon_number))
 
