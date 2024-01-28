@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://dk2ljbbj8kipb"]
+
+[ext_resource type="Script" path="res://ui/menu_item.gd" id="1_fjwvn"]
+
+[node name="MenuPrincipalItem" type="RichTextLabel"]
+custom_minimum_size = Vector2(70, 30)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+bbcode_enabled = true
+text = "[center]Respect[/center]"
+script = ExtResource("1_fjwvn")

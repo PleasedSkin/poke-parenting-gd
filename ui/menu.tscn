@@ -1,10 +1,10 @@
 [gd_scene load_steps=4 format=3 uid="uid://chrxrpbcsudtr"]
 
 [ext_resource type="Texture2D" uid="uid://chrhsdipryos6" path="res://assets/menu_box_1.png" id="1_kiprr"]
+[ext_resource type="PackedScene" uid="uid://dk2ljbbj8kipb" path="res://ui/menu_principal_item.tscn" id="2_72221"]
 [ext_resource type="PackedScene" uid="uid://cedewfsg7uery" path="res://ui/cursor.tscn" id="2_pwquh"]
-[ext_resource type="Script" path="res://ui/menu_item.gd" id="2_xgaok"]
 
-[node name="NinePatchRect" type="NinePatchRect"]
+[node name="Menu" type="NinePatchRect"]
 texture_filter = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -34,49 +34,20 @@ theme_override_constants/h_separation = 40
 theme_override_constants/v_separation = 10
 columns = 2
 
-[node name="Respect" type="RichTextLabel" parent="GridBoxContainer"]
-custom_minimum_size = Vector2(70, 30)
+[node name="Respect" parent="GridBoxContainer" instance=ExtResource("2_72221")]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_colors/default_color = Color(0, 0, 0, 1)
-bbcode_enabled = true
-text = "[center]Respect[/center]"
-script = ExtResource("2_xgaok")
-is_bonus = true
 
-[node name="Repas" type="RichTextLabel" parent="GridBoxContainer"]
-custom_minimum_size = Vector2(70, 30)
+[node name="Repas" parent="GridBoxContainer" instance=ExtResource("2_72221")]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_colors/default_color = Color(0, 0, 0, 1)
-bbcode_enabled = true
 text = "[center]Repas[/center]"
-script = ExtResource("2_xgaok")
-is_malus = true
 
-[node name="Maitrise" type="RichTextLabel" parent="GridBoxContainer"]
-custom_minimum_size = Vector2(70, 30)
+[node name="Maitrise" parent="GridBoxContainer" instance=ExtResource("2_72221")]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_colors/default_color = Color(0, 0, 0, 1)
-bbcode_enabled = true
 text = "[center]Maîtrise[/center]"
-script = ExtResource("2_xgaok")
-is_malus = true
 
-[node name="Modèle" type="RichTextLabel" parent="GridBoxContainer"]
-custom_minimum_size = Vector2(70, 30)
+[node name="Modele" parent="GridBoxContainer" instance=ExtResource("2_72221")]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_colors/default_color = Color(0, 0, 0, 1)
-bbcode_enabled = true
 text = "[center]Modèle[/center]"
-script = ExtResource("2_xgaok")
-is_malus = true
 
 [node name="Cursor" parent="." instance=ExtResource("2_pwquh")]
 layout_mode = 0

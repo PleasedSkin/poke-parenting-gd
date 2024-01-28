@@ -54,7 +54,8 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource("2_o8u7r")
 
-[node name="Label" type="RichTextLabel" parent="CanvasLayer/ColorRect/VBoxContainer"]
+[node name="Niveau" type="RichTextLabel" parent="CanvasLayer/ColorRect/VBoxContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(100, 30)
 layout_mode = 2
 size_flags_horizontal = 4

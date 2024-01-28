@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="ComportementResource" load_steps=2 format=3 uid="uid://db2kkqwmnm033"]
+
+[ext_resource type="Script" path="res://resources/comportement_resource.gd" id="1_qcp11"]
+
+[resource]
+script = ExtResource("1_qcp11")
+nom = "Bêtises"
+points = -2

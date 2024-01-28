@@ -1,10 +1,8 @@
 extends RichTextLabel
+class_name MenuItem
 
 signal cursor_selected
 signal selected_by_click(name: String)
-
-@export var is_bonus: bool
-@export var is_malus: bool
 
 func _ready() -> void:
 	gui_input.connect(_on_gui_input)

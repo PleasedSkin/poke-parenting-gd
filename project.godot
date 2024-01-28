@@ -15,10 +15,23 @@ run/main_scene="res://game.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+PokeParentingEvents="*res://autoload/pokeParentingEvents.gd"
+
 [display]
 
 window/size/viewport_width=330
 window/size/viewport_height=650
+
+[file_customization]
+
+folder_colors={
+"res://assets/": "pink",
+"res://autoload/": "red",
+"res://resources/": "yellow",
+"res://ui/": "green"
+}
 
 [rendering]
 

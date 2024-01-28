@@ -56,7 +56,7 @@ func get_menu_item_at_index(index : int) -> Control:
 	return menu_parent.get_child(index) as Control
 
 func set_cursor_from_index(index : int) -> void:
-	print(index)
+	#print(index)
 	var menu_item := get_menu_item_at_index(index)
 	
 	set_cursor_for_menu_item(menu_item)
