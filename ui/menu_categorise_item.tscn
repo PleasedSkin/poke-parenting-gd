@@ -4,5 +4,6 @@
 [ext_resource type="Script" path="res://ui/menu_categorise_item.gd" id="2_hkpkl"]
 
 [node name="MenuCategoriseItem" instance=ExtResource("1_4cmp6")]
+custom_minimum_size = Vector2(90, 30)
 script = ExtResource("2_hkpkl")
 comportement = null

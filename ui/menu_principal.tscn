@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://2acw507ujmqg"]
+
+[ext_resource type="PackedScene" uid="uid://chrxrpbcsudtr" path="res://ui/menu.tscn" id="1_yx0en"]
+[ext_resource type="PackedScene" uid="uid://dk2ljbbj8kipb" path="res://ui/menu_principal_item.tscn" id="2_a4npt"]
+
+[node name="MenuPrincipal" instance=ExtResource("1_yx0en")]
+
+[node name="Respect" parent="GridBoxContainer" index="0" instance=ExtResource("2_a4npt")]
+layout_mode = 2
+
+[node name="Repas" parent="GridBoxContainer" index="1" instance=ExtResource("2_a4npt")]
+layout_mode = 2
+text = "[center]Repas[/center]"
+
+[node name="Maitrise" parent="GridBoxContainer" index="2" instance=ExtResource("2_a4npt")]
+layout_mode = 2
+text = "[center]Maîtrise[/center]"
+
+[node name="Modele" parent="GridBoxContainer" index="3" instance=ExtResource("2_a4npt")]
+layout_mode = 2
+text = "[center]Modèle[/center]"

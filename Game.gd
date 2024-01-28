@@ -7,6 +7,10 @@ extends Node2D
 @onready var texture_rect = %TextureRect as TextureRect
 @onready var pokemon_name_label = %Name
 @onready var pokemon_level = %Niveau
+@onready var menu_principal = %MenuPrincipal
+@onready var main_container = %VBoxContainer
+@onready var bouton_retour = %Retour
+var current_special_menu
 
 const POKE_API_URL := "https://pokeapi.co/api/v2/"
 
@@ -14,12 +18,15 @@ var pokemon_number: int
 
 var rng = RandomNumberGenerator.new()
 
+var main_menu
+
 func _ready() -> void:
+	main_menu = preload("res://ui/menu_principal.tscn").instantiate()
 	get_pokemon_request.request_completed.connect(_on_pokemon_request_completed)
 	get_pokemon_species_request.request_completed.connect(_on_pokemon_species_request_completed)
 	get_pokemon_pic_request.request_completed.connect(_on_pokemon_pic_request_completed)
 	PokeParentingEvents.points_emitted.connect(_on_poke_parenting_events_points_emitted)
-	PokeParentingEvents.emit_signal("points_emitted", 5)
+	PokeParentingEvents.main_item_selected.connect(_on_poke_parenting_events_main_item_selected)
 	#_generate_random_pokemon()
 
 func _generate_random_pokemon() -> void:
@@ -65,3 +72,24 @@ func _on_button_pressed() -> void:
 	
 func _on_poke_parenting_events_points_emitted(nb_points: int) -> void:
 	pokemon_level.text = "[center]Niveau : " + str(nb_points) + "[/center]"
+
+
+func _on_poke_parenting_events_main_item_selected(name: String):
+	var pos = menu_principal.global_position
+	# main_container.remove_child(menu_principal)
+	menu_principal.visible = false
+	menu_principal.process_mode = Node.PROCESS_MODE_DISABLED
+	current_special_menu = load("res://ui/menus_categorises/" + name.to_lower() + ".tscn").instantiate()
+	menu_principal.add_sibling(current_special_menu)
+	# main_container.add_child(current_special_menu)
+	current_special_menu.global_position = pos
+	bouton_retour.visible = true
+
+func _on_retour_pressed() -> void:
+	# var pos = current_special_menu.global_position
+	main_container.remove_child(current_special_menu)
+	# main_container.add_child(main_menu)
+	# main_menu.global_position = pos
+	menu_principal.visible = true
+	menu_principal.process_mode = Node.PROCESS_MODE_INHERIT
+	bouton_retour.visible = false

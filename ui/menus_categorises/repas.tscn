@@ -1,0 +1,26 @@
+[gd_scene load_steps=7 format=3 uid="uid://bi0vhx5adamvu"]
+
+[ext_resource type="PackedScene" uid="uid://chrxrpbcsudtr" path="res://ui/menu.tscn" id="1_kduxq"]
+[ext_resource type="PackedScene" uid="uid://b806phwvs147f" path="res://ui/menu_categorise_item.tscn" id="2_kady2"]
+[ext_resource type="Resource" uid="uid://dtrubxf8p8u8c" path="res://resources/assise.tres" id="3_aolfi"]
+[ext_resource type="Resource" uid="uid://db2kkqwmnm033" path="res://resources/betises_a_table.tres" id="4_e400w"]
+[ext_resource type="Resource" uid="uid://bm8x0j3jfgrgn" path="res://resources/patience.tres" id="5_d4c7r"]
+[ext_resource type="Resource" uid="uid://cg0jvfi5nmqe5" path="res://resources/sortie_prematuree.tres" id="6_xvju3"]
+
+[node name="Menu" instance=ExtResource("1_kduxq")]
+
+[node name="MenuCategoriseItem" parent="GridBoxContainer" index="0" instance=ExtResource("2_kady2")]
+layout_mode = 2
+comportement = ExtResource("3_aolfi")
+
+[node name="MenuCategoriseItem2" parent="GridBoxContainer" index="1" instance=ExtResource("2_kady2")]
+layout_mode = 2
+comportement = ExtResource("4_e400w")
+
+[node name="MenuCategoriseItem3" parent="GridBoxContainer" index="2" instance=ExtResource("2_kady2")]
+layout_mode = 2
+comportement = ExtResource("5_d4c7r")
+
+[node name="MenuCategoriseItem4" parent="GridBoxContainer" index="3" instance=ExtResource("2_kady2")]
+layout_mode = 2
+comportement = ExtResource("6_xvju3")

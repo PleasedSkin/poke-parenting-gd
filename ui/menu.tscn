@@ -1,16 +1,18 @@
-[gd_scene load_steps=4 format=3 uid="uid://chrxrpbcsudtr"]
+[gd_scene load_steps=3 format=3 uid="uid://chrxrpbcsudtr"]
 
 [ext_resource type="Texture2D" uid="uid://chrhsdipryos6" path="res://assets/menu_box_1.png" id="1_kiprr"]
-[ext_resource type="PackedScene" uid="uid://dk2ljbbj8kipb" path="res://ui/menu_principal_item.tscn" id="2_72221"]
 [ext_resource type="PackedScene" uid="uid://cedewfsg7uery" path="res://ui/cursor.tscn" id="2_pwquh"]
 
 [node name="Menu" type="NinePatchRect"]
 texture_filter = 1
+custom_minimum_size = Vector2(300, 150)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 texture = ExtResource("1_kiprr")
 patch_margin_left = 6
 patch_margin_top = 6
@@ -33,21 +35,6 @@ grow_vertical = 2
 theme_override_constants/h_separation = 40
 theme_override_constants/v_separation = 10
 columns = 2
-
-[node name="Respect" parent="GridBoxContainer" instance=ExtResource("2_72221")]
-layout_mode = 2
-
-[node name="Repas" parent="GridBoxContainer" instance=ExtResource("2_72221")]
-layout_mode = 2
-text = "[center]Repas[/center]"
-
-[node name="Maitrise" parent="GridBoxContainer" instance=ExtResource("2_72221")]
-layout_mode = 2
-text = "[center]Maîtrise[/center]"
-
-[node name="Modele" parent="GridBoxContainer" instance=ExtResource("2_72221")]
-layout_mode = 2
-text = "[center]Modèle[/center]"
 
 [node name="Cursor" parent="." instance=ExtResource("2_pwquh")]
 layout_mode = 0

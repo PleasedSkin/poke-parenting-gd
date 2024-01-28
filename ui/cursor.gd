@@ -34,11 +34,15 @@ func _process(delta):
 		set_cursor_from_index(_correct_index((cursor_index + input.x + input.y * menu_parent.columns) as int % nb_elements))
 	
 	if Input.is_action_just_pressed("ui_select"):
-		var current_menu_item := get_menu_item_at_index(cursor_index)
+		_trigger_menu_item()
+
+
+func _trigger_menu_item():
+	var current_menu_item := get_menu_item_at_index(cursor_index)
 		
-		if current_menu_item != null:
-			if current_menu_item.has_method("cursor_select"):
-				current_menu_item.cursor_select()
+	if current_menu_item != null:
+		if current_menu_item.has_method("cursor_select"):
+			current_menu_item.cursor_select()
 
 func _correct_index(index):
 	if index == -1:
@@ -68,7 +72,12 @@ func set_cursor_from_name(name: String) -> void:
 	
 	set_cursor_for_menu_item(menu_item)
 	
-	cursor_index = menu_item.get_index()
+	var future_index = menu_item.get_index()
+
+	if (future_index == cursor_index):
+		_trigger_menu_item()
+
+	cursor_index = future_index
 
 func set_cursor_for_menu_item(menu_item: Control):
 	if menu_item == null:

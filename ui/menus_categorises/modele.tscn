@@ -1,0 +1,16 @@
+[gd_scene load_steps=5 format=3 uid="uid://ba88ax17rjve5"]
+
+[ext_resource type="PackedScene" uid="uid://chrxrpbcsudtr" path="res://ui/menu.tscn" id="1_1ssm1"]
+[ext_resource type="PackedScene" uid="uid://b806phwvs147f" path="res://ui/menu_categorise_item.tscn" id="2_oxvb6"]
+[ext_resource type="Resource" uid="uid://ck0gn7mc5j45x" path="res://resources/montrer_betise.tres" id="3_c6asw"]
+[ext_resource type="Resource" uid="uid://ccsk0vk8010kk" path="res://resources/rire_a_betise.tres" id="4_7ywl0"]
+
+[node name="Menu" instance=ExtResource("1_1ssm1")]
+
+[node name="MenuCategoriseItem" parent="GridBoxContainer" index="0" instance=ExtResource("2_oxvb6")]
+layout_mode = 2
+comportement = ExtResource("3_c6asw")
+
+[node name="MenuCategoriseItem2" parent="GridBoxContainer" index="1" instance=ExtResource("2_oxvb6")]
+layout_mode = 2
+comportement = ExtResource("4_7ywl0")
