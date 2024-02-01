@@ -4,5 +4,5 @@
 
 [resource]
 script = ExtResource("1_a3fd5")
-nom = "Grimace(s)"
+nom = "Grimace"
 points = -2
