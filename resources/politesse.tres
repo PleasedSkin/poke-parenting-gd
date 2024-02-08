@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="ComportementResource" load_steps=2 format=3 uid="uid://dlmwufs061dlc"]
+
+[ext_resource type="Script" path="res://resources/comportement_resource.gd" id="1_8srlj"]
+
+[resource]
+script = ExtResource("1_8srlj")
+nom = "Politesse"
+points = 1

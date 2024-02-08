@@ -1,21 +1,32 @@
-[gd_scene load_steps=6 format=3 uid="uid://hd5fm87yibe5"]
+[gd_scene load_steps=7 format=3 uid="uid://hd5fm87yibe5"]
 
 [ext_resource type="PackedScene" uid="uid://chrxrpbcsudtr" path="res://ui/menu.tscn" id="1_rh0nx"]
 [ext_resource type="PackedScene" uid="uid://b806phwvs147f" path="res://ui/menu_categorise_item.tscn" id="2_gocyo"]
 [ext_resource type="Resource" uid="uid://bjm8yjobmm5gh" path="res://resources/courir.tres" id="3_p77i8"]
-[ext_resource type="Resource" uid="uid://bm8x0j3jfgrgn" path="res://resources/patience.tres" id="4_w3pom"]
+[ext_resource type="Resource" uid="uid://bm8x0j3jfgrgn" path="res://resources/impatience.tres" id="4_w3pom"]
 [ext_resource type="Resource" uid="uid://btyboafvl30ve" path="res://resources/se_jeter.tres" id="5_fva17"]
+[ext_resource type="Resource" uid="uid://domr5t5ljpkyo" path="res://resources/boudin.tres" id="6_6o4cv"]
 
 [node name="Menu" instance=ExtResource("1_rh0nx")]
 
 [node name="MenuCategoriseItem" parent="GridBoxContainer" index="0" instance=ExtResource("2_gocyo")]
 layout_mode = 2
+theme_override_colors/default_color = Color(0.666667, 0, 0.156863, 1)
 comportement = ExtResource("3_p77i8")
 
 [node name="MenuCategoriseItem2" parent="GridBoxContainer" index="1" instance=ExtResource("2_gocyo")]
+custom_minimum_size = Vector2(80, 30)
 layout_mode = 2
+theme_override_colors/default_color = Color(0.666667, 0, 0.156863, 1)
 comportement = ExtResource("4_w3pom")
 
 [node name="MenuCategoriseItem3" parent="GridBoxContainer" index="2" instance=ExtResource("2_gocyo")]
 layout_mode = 2
+theme_override_colors/default_color = Color(0.666667, 0, 0.156863, 1)
 comportement = ExtResource("5_fva17")
+
+[node name="MenuCategoriseItem4" parent="GridBoxContainer" index="3" instance=ExtResource("2_gocyo")]
+layout_mode = 2
+theme_override_colors/default_color = Color(0.666667, 0, 0.156863, 1)
+text = "[center]Boudin[/center]"
+comportement = ExtResource("6_6o4cv")

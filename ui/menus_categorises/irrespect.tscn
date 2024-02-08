@@ -1,0 +1,32 @@
+[gd_scene load_steps=7 format=3 uid="uid://bp0nwdbvyg7wt"]
+
+[ext_resource type="PackedScene" uid="uid://chrxrpbcsudtr" path="res://ui/menu.tscn" id="1_ki8uq"]
+[ext_resource type="PackedScene" uid="uid://b806phwvs147f" path="res://ui/menu_categorise_item.tscn" id="2_yvgml"]
+[ext_resource type="Resource" uid="uid://bqgugp0jc3s2y" path="res://resources/mutisme.tres" id="3_dgk0t"]
+[ext_resource type="Resource" uid="uid://2oqs21elimiq" path="res://resources/insulte_ou_grimace.tres" id="4_1w00c"]
+[ext_resource type="Resource" uid="uid://dli778c4k08fa" path="res://resources/mot_ecole.tres" id="6_ljp32"]
+[ext_resource type="Resource" uid="uid://cf8t7ttndxjco" path="res://resources/ingerance.tres" id="6_ycibf"]
+
+[node name="Menu" instance=ExtResource("1_ki8uq")]
+
+[node name="MenuCategoriseItem" parent="GridBoxContainer" index="0" instance=ExtResource("2_yvgml")]
+layout_mode = 2
+theme_override_colors/default_color = Color(0.666667, 0, 0.156863, 1)
+comportement = ExtResource("3_dgk0t")
+
+[node name="MenuCategoriseItem2" parent="GridBoxContainer" index="1" instance=ExtResource("2_yvgml")]
+layout_mode = 2
+theme_override_colors/default_color = Color(0.666667, 0, 0.156863, 1)
+comportement = ExtResource("4_1w00c")
+
+[node name="MenuCategoriseItem4" parent="GridBoxContainer" index="2" instance=ExtResource("2_yvgml")]
+custom_minimum_size = Vector2(72, 30)
+layout_mode = 2
+theme_override_colors/default_color = Color(0.666667, 0, 0.156863, 1)
+comportement = ExtResource("6_ycibf")
+
+[node name="MenuCategoriseItem5" parent="GridBoxContainer" index="3" instance=ExtResource("2_yvgml")]
+custom_minimum_size = Vector2(72, 30)
+layout_mode = 2
+theme_override_colors/default_color = Color(0.666667, 0, 0.156863, 1)
+comportement = ExtResource("6_ljp32")

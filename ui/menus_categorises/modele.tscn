@@ -1,16 +1,30 @@
-[gd_scene load_steps=5 format=3 uid="uid://ba88ax17rjve5"]
+[gd_scene load_steps=7 format=3 uid="uid://ba88ax17rjve5"]
 
 [ext_resource type="PackedScene" uid="uid://chrxrpbcsudtr" path="res://ui/menu.tscn" id="1_1ssm1"]
 [ext_resource type="PackedScene" uid="uid://b806phwvs147f" path="res://ui/menu_categorise_item.tscn" id="2_oxvb6"]
-[ext_resource type="Resource" uid="uid://ck0gn7mc5j45x" path="res://resources/montrer_betise.tres" id="3_c6asw"]
-[ext_resource type="Resource" uid="uid://ccsk0vk8010kk" path="res://resources/rire_a_betise.tres" id="4_7ywl0"]
+[ext_resource type="Resource" uid="uid://b11dhc6ielam" path="res://resources/repas_nickel.tres" id="3_u1b0x"]
+[ext_resource type="Resource" uid="uid://bsp4wjs7haf5t" path="res://resources/sagesse_ecole.tres" id="4_nmalt"]
+[ext_resource type="Resource" uid="uid://dlmwufs061dlc" path="res://resources/politesse.tres" id="4_p5opd"]
+[ext_resource type="Resource" uid="uid://m56ujdjp317e" path="res://resources/sage_journee_garde.tres" id="6_qbona"]
 
 [node name="Menu" instance=ExtResource("1_1ssm1")]
 
 [node name="MenuCategoriseItem" parent="GridBoxContainer" index="0" instance=ExtResource("2_oxvb6")]
 layout_mode = 2
-comportement = ExtResource("3_c6asw")
+theme_override_colors/default_color = Color(0.0509804, 0.376471, 0.247059, 1)
+comportement = ExtResource("3_u1b0x")
 
-[node name="MenuCategoriseItem2" parent="GridBoxContainer" index="1" instance=ExtResource("2_oxvb6")]
+[node name="MenuCategoriseItem3" parent="GridBoxContainer" index="1" instance=ExtResource("2_oxvb6")]
 layout_mode = 2
-comportement = ExtResource("4_7ywl0")
+theme_override_colors/default_color = Color(0.0509804, 0.376471, 0.247059, 1)
+comportement = ExtResource("4_p5opd")
+
+[node name="MenuCategoriseItem2" parent="GridBoxContainer" index="2" instance=ExtResource("2_oxvb6")]
+layout_mode = 2
+theme_override_colors/default_color = Color(0.0509804, 0.376471, 0.247059, 1)
+comportement = ExtResource("4_nmalt")
+
+[node name="MenuCategoriseItem4" parent="GridBoxContainer" index="3" instance=ExtResource("2_oxvb6")]
+layout_mode = 2
+theme_override_colors/default_color = Color(0.0509804, 0.376471, 0.247059, 1)
+comportement = ExtResource("6_qbona")

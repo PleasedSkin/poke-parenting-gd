@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="ComportementResource" load_steps=2 format=3 uid="uid://bsp4wjs7haf5t"]
+
+[ext_resource type="Script" path="res://resources/comportement_resource.gd" id="1_w21s2"]
+
+[resource]
+script = ExtResource("1_w21s2")
+nom = "Sage école"
+points = 5

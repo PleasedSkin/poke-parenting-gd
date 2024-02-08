@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="ComportementResource" load_steps=2 format=3 uid="uid://b11dhc6ielam"]
+
+[ext_resource type="Script" path="res://resources/comportement_resource.gd" id="1_pfobe"]
+
+[resource]
+script = ExtResource("1_pfobe")
+nom = "Repas OK"
+points = 5

@@ -4,5 +4,5 @@
 
 [resource]
 script = ExtResource("1_e610i")
-nom = "Irrespect"
-points = -5
+nom = "Insulte"
+points = -10

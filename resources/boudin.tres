@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="ComportementResource" load_steps=2 format=3 uid="uid://domr5t5ljpkyo"]
+
+[ext_resource type="Script" path="res://resources/comportement_resource.gd" id="1_75kw5"]
+
+[resource]
+script = ExtResource("1_75kw5")
+nom = "Boudin"
+points = -1

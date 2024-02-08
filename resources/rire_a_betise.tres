@@ -1,8 +1,0 @@
-[gd_resource type="Resource" script_class="ComportementResource" load_steps=2 format=3 uid="uid://ccsk0vk8010kk"]
-
-[ext_resource type="Script" path="res://resources/comportement_resource.gd" id="1_hi3fs"]
-
-[resource]
-script = ExtResource("1_hi3fs")
-nom = "Rire à une bêtise"
-points = -1

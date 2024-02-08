@@ -4,5 +4,5 @@
 
 [resource]
 script = ExtResource("1_eu8nh")
-nom = "Respect"
-points = 5
+nom = "Mutisme"
+points = -1

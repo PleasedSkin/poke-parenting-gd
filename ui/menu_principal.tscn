@@ -5,17 +5,23 @@
 
 [node name="MenuPrincipal" instance=ExtResource("1_yx0en")]
 
-[node name="Respect" parent="GridBoxContainer" index="0" instance=ExtResource("2_a4npt")]
+[node name="Irrespect" parent="GridBoxContainer" index="0" instance=ExtResource("2_a4npt")]
+custom_minimum_size = Vector2(70, 30)
 layout_mode = 2
+theme_override_colors/default_color = Color(0.686275, 0, 0.156863, 1)
+text = "[center]Irrespect[/center]"
 
 [node name="Repas" parent="GridBoxContainer" index="1" instance=ExtResource("2_a4npt")]
 layout_mode = 2
+theme_override_colors/default_color = Color(0.666667, 0, 0.156863, 1)
 text = "[center]Repas[/center]"
 
 [node name="Maitrise" parent="GridBoxContainer" index="2" instance=ExtResource("2_a4npt")]
 layout_mode = 2
+theme_override_colors/default_color = Color(0.666667, 0, 0.156863, 1)
 text = "[center]Maîtrise[/center]"
 
 [node name="Modele" parent="GridBoxContainer" index="3" instance=ExtResource("2_a4npt")]
 layout_mode = 2
+theme_override_colors/default_color = Color(0.0509804, 0.376471, 0.247059, 1)
 text = "[center]Modèle[/center]"

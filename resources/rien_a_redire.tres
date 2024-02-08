@@ -1,8 +1,0 @@
-[gd_resource type="Resource" script_class="ComportementResource" load_steps=2 format=3 uid="uid://b70tufheqhoq5"]
-
-[ext_resource type="Script" path="res://resources/comportement_resource.gd" id="1_a435u"]
-
-[resource]
-script = ExtResource("1_a435u")
-nom = "Rien à redire"
-points = 5
