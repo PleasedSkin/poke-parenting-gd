@@ -89,6 +89,9 @@ func _on_pokemon_evolution_infos_request_completed(_result, response_code, _head
 	if response_code == HTTPClient.RESPONSE_OK:
 		var evolution_infos = JSON.parse_string(body.get_string_from_utf8())
 		var evolves_to = evolution_infos["chain"]["evolves_to"]
+		
+		if evolves_to.size() == 0:
+			evolution_infos_dict = {}
 
 		while evolves_to.size() > 0 && _get_evolution_trigger(evolves_to).size() > 0:
 			var min_level_to_evolve = evolution_details[0].min_level
