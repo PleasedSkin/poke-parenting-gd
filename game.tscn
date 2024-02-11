@@ -16,6 +16,9 @@ unique_name_in_owner = true
 [node name="GetPokemonPic" type="HTTPRequest" parent="."]
 unique_name_in_owner = true
 
+[node name="GetPokemonEvolutionInfos" type="HTTPRequest" parent="."]
+unique_name_in_owner = true
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]

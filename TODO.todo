@@ -1,8 +1,11 @@
-- système points 
-- mécanisme niveaux => si <= 0 => oeuf sinon check présence évolution, ...
+✅ système points 
+✅ mécanisme niveaux => si <= 0 => oeuf sinon check présence évolution, ...
 - étoiles pour chaque évol réalisée et niveau 100 atteint
 - si niveau 100, reset à l'état d'oeuf avec étoile
 - curseur à revoir avec animation (flip)
 - surbrillance texte quand sélectionné et quand action réalisée + son associé
 - style bouton à revoir
 - police à revoir (pixel)
+- couleur de fond qui change suivant qu'on approche du niveau 100 ou qu'on retourne à zéro
+- sauvegarde et chargement
+- menu principal avec nouvelle partie pour tout reset
