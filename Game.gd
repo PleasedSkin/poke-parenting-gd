@@ -5,9 +5,10 @@ extends Node2D
 @onready var get_pokemon_species_request := %GetPokemonSpecies
 @onready var get_pokemon_pic_request := %GetPokemonPic
 @onready var get_pokemon_evolution_infos_request := %GetPokemonEvolutionInfos
-@onready var texture_rect = %TextureRect as TextureRect
+@onready var texture_rect = %PokeTextureRect as TextureRect
 @onready var pokemon_name_label = %Name
 @onready var pokemon_level_label = %Niveau
+@onready var stars_amount_label = %NbEtoiles
 @onready var menu_principal = %MenuPrincipal
 @onready var main_container = %VBoxContainer
 @onready var bouton_retour = %Retour
@@ -18,8 +19,10 @@ var evolution_pokemon_number
 var can_evolve := false
 var evolution_details
 var evolution_infos_dict = {} # dico clé niveau d'évol et valeur num pokémon d'évol
+var current_pokemon_name: String
 
 var level := 0
+var stars_amount := 0
 
 
 const POKE_API_URL := "https://pokeapi.co/api/v2/"
@@ -63,6 +66,7 @@ func _on_pokemon_pic_request_completed(_result, response_code, _headers, body):
 	if response_code == HTTPClient.RESPONSE_OK:
 		var image = Image.new()
 		var resultat_chargement = image.load_png_from_buffer(body)
+		_change_pokemon_label(current_pokemon_name) # pour avoir le nom qui apparaît en même temps que l'image
 		if resultat_chargement != OK:
 			print_debug("Erreur lors du chargement de l'image du pokémon " + str(pokemon_number))
 		else:
@@ -78,7 +82,8 @@ func _on_pokemon_species_request_completed(_result, response_code, _headers, bod
 	if response_code == HTTPClient.RESPONSE_OK:
 		var pokemon_species = JSON.parse_string(body.get_string_from_utf8())
 		var corresponding_item = pokemon_species["names"].filter(func(pkmName): return pkmName.language.name == "fr")[0]
-		_change_pokemon_label(corresponding_item.name)
+		# _change_pokemon_label(corresponding_item.name)
+		current_pokemon_name = corresponding_item.name
 		var evolution_chain_url = pokemon_species["evolution_chain"]["url"]
 		get_pokemon_evolution_infos_request.request(evolution_chain_url)
 	else:
@@ -115,28 +120,34 @@ func _on_button_pressed() -> void:
 func _on_poke_parenting_events_points_emitted(nb_points: int) -> void:
 	var old_level = level
 	level += nb_points
-	level = clampi(level, 0, 100) 
-	pokemon_level_label.text = "[center]Niveau : " + str(level) + "[/center]"
 	if (old_level == 0 && level > 0):
 		_generate_random_pokemon()
 		# pokemon_number = 7
 		# _generate_targeted_pokemon(pokemon_number)
 	elif level == 0:
-		texture_rect.texture = default_pokemon_sprite
-		_change_pokemon_label(default_pokemon_name)
+		_reset_pokemon()
+	elif level > 100:
+		_reset_pokemon()
+		level = 0
+		stars_amount += 1
+		stars_amount_label.text = "x " + str(stars_amount)
 	else:
 		var niveaux_evol = evolution_infos_dict.keys()
 		var niveau_pertinent = 0
 		for niv in niveaux_evol:
 			if level >= niv:
 				niveau_pertinent = niv
-		print(niveau_pertinent)
+		# print(niveau_pertinent)
 
 		if (niveau_pertinent > 0):
 			evolution_pokemon_number = evolution_infos_dict.get(niveau_pertinent)
 			if evolution_pokemon_number != pokemon_number:
 				pokemon_number = evolution_pokemon_number
 				_generate_targeted_pokemon(evolution_pokemon_number)
+
+
+	level = clampi(level, 0, 100) 
+	pokemon_level_label.text = "[center]Niveau : " + str(level) + "[/center]"
 	
 
 	# else:
@@ -146,6 +157,10 @@ func _on_poke_parenting_events_points_emitted(nb_points: int) -> void:
 
 	# 	# if level < old_level : faire éventuellement désévoluer
 
+
+func _reset_pokemon():
+	texture_rect.texture = default_pokemon_sprite
+	_change_pokemon_label(default_pokemon_name)
 
 func _on_poke_parenting_events_main_item_selected(name: String):
 	var pos = menu_principal.global_position
