@@ -3,8 +3,9 @@
 ✅ étoiles pour chaque évol réalisée et niveau 100 atteint
 ✅ si niveau 100, reset à l'état d'oeuf avec étoile
 - couleur de fond qui change suivant qu'on approche du niveau 100 ou qu'on retourne à zéro
-- menu principal avec nouvelle partie pour tout reset
+✅ menu principal avec nouvelle partie pour tout reset
 - sauvegarde et chargement
+- animation / spinner pendant les requêtes qui sont longues !!
 
 Polish
 - curseur à revoir avec animation (flip)
@@ -13,3 +14,6 @@ Polish
 - police à revoir (pixel)
 - animation lors de l'évolution et de la désévolution => important car la requête est plutôt longue
 - animation lors du gain d'une étoile !
+
+
+Site pour le logo : https://fontmeme.com/pokemon-font/

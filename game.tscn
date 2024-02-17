@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://cooh48uw4bjsk"]
+[gd_scene load_steps=6 format=3 uid="uid://cooh48uw4bjsk"]
 
 [ext_resource type="Script" path="res://Game.gd" id="1_g6b4v"]
 [ext_resource type="Texture2D" uid="uid://cqfiwoflwp1rh" path="res://assets/star.png" id="2_kn6ae"]
 [ext_resource type="Texture2D" uid="uid://cxb82psgxjvj3" path="res://assets/pokemon-egg.png" id="2_o8u7r"]
+[ext_resource type="FontFile" uid="uid://caw8nx02wlaer" path="res://assets/fonts/pokemon_pixel_font.ttf" id="2_v3thp"]
 [ext_resource type="PackedScene" uid="uid://2acw507ujmqg" path="res://ui/menu_principal.tscn" id="3_cuckw"]
 
 [node name="Game" type="Node2D"]
@@ -46,7 +47,8 @@ custom_minimum_size = Vector2(500, 70)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
-theme_override_font_sizes/normal_font_size = 42
+theme_override_fonts/normal_font = ExtResource("2_v3thp")
+theme_override_font_sizes/normal_font_size = 72
 bbcode_enabled = true
 text = "[center]Oeuf[/center]"
 
@@ -61,6 +63,8 @@ texture = ExtResource("2_kn6ae")
 [node name="NbEtoiles" type="Label" parent="CanvasLayer/ColorRect/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_v3thp")
+theme_override_font_sizes/font_size = 20
 text = "x 0	"
 
 [node name="PokeTextureRect" type="TextureRect" parent="CanvasLayer/ColorRect/VBoxContainer"]
@@ -78,6 +82,8 @@ custom_minimum_size = Vector2(100, 30)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
+theme_override_fonts/normal_font = ExtResource("2_v3thp")
+theme_override_font_sizes/normal_font_size = 30
 bbcode_enabled = true
 text = "[center]Niveau : 0[/center]"
 

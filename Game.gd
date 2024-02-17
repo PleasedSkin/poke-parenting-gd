@@ -42,7 +42,15 @@ func _ready() -> void:
 	get_pokemon_evolution_infos_request.request_completed.connect(_on_pokemon_evolution_infos_request_completed)
 	PokeParentingEvents.points_emitted.connect(_on_poke_parenting_events_points_emitted)
 	PokeParentingEvents.main_item_selected.connect(_on_poke_parenting_events_main_item_selected)
+	PokeParentingEvents.reset_required.connect(reset_data)
 	#_generate_random_pokemon()
+
+
+func reset_data() -> void:
+	level = 0
+	stars_amount = 0
+	_reset_pokemon()
+
 
 func _generate_random_pokemon() -> void:
 	pokemon_number = rng.randi_range(1, 1025)

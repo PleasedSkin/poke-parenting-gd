@@ -1,0 +1,80 @@
+[gd_scene load_steps=5 format=3 uid="uid://dbsbnb15atvsc"]
+
+[ext_resource type="Texture2D" uid="uid://ucp3wi6tqycq" path="res://assets/pixel-art-pokeball.png" id="1_3hxoj"]
+[ext_resource type="Texture2D" uid="uid://dvtwhemkycamf" path="res://assets/pokeLogo.png" id="1_4st16"]
+[ext_resource type="Script" path="res://main_menu.gd" id="1_wm0sq"]
+[ext_resource type="FontFile" uid="uid://caw8nx02wlaer" path="res://assets/fonts/pokemon_pixel_font.ttf" id="3_rsjic"]
+
+[node name="MainMenu" type="Node2D"]
+script = ExtResource("1_wm0sq")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.329412, 0.556863, 0.756863, 1)
+
+[node name="LogoTextureRect" type="TextureRect" parent="CanvasLayer/ColorRect"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -153.5
+offset_top = 66.0
+offset_right = 254.5
+offset_bottom = 156.0
+grow_horizontal = 2
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("1_4st16")
+
+[node name="BallTextureRect" type="TextureRect" parent="CanvasLayer/ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.5
+offset_top = -157.0
+offset_right = 411.5
+offset_bottom = 355.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("1_3hxoj")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/ColorRect"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -63.5
+offset_top = -186.0
+offset_right = 63.5
+offset_bottom = -109.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 25
+alignment = 1
+
+[node name="Button" type="Button" parent="CanvasLayer/ColorRect/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("3_rsjic")
+theme_override_font_sizes/font_size = 30
+text = "Nouvelle  partie	"
+
+[node name="Button2" type="Button" parent="CanvasLayer/ColorRect/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_rsjic")
+theme_override_font_sizes/font_size = 25
+text = "Continuer"
+
+[connection signal="pressed" from="CanvasLayer/ColorRect/VBoxContainer/Button" to="." method="_on_button_pressed"]
