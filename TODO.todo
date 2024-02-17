@@ -5,7 +5,7 @@
 - couleur de fond qui change suivant qu'on approche du niveau 100 ou qu'on retourne à zéro
 ✅ menu principal avec nouvelle partie pour tout reset
 - sauvegarde et chargement
-- animation / spinner pendant les requêtes qui sont longues !!
+✅ animation / spinner pendant les requêtes qui sont longues !!
 
 Polish
 - curseur à revoir avec animation (flip)
@@ -14,6 +14,7 @@ Polish
 - police à revoir (pixel)
 - animation lors de l'évolution et de la désévolution => important car la requête est plutôt longue
 - animation lors du gain d'une étoile !
+- ajouter du son !
 
 
 Site pour le logo : https://fontmeme.com/pokemon-font/

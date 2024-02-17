@@ -6,6 +6,8 @@ extends Node2D
 @onready var get_pokemon_pic_request := %GetPokemonPic
 @onready var get_pokemon_evolution_infos_request := %GetPokemonEvolutionInfos
 @onready var texture_rect = %PokeTextureRect as TextureRect
+@onready var loading_texture_rect = %LoadingTextureRect
+@onready var poke_texture_mask = %PokeTextureMask
 @onready var pokemon_name_label = %Name
 @onready var pokemon_level_label = %Niveau
 @onready var stars_amount_label = %NbEtoiles
@@ -23,6 +25,8 @@ var current_pokemon_name: String
 
 var level := 0
 var stars_amount := 0
+
+var is_evolving := false
 
 
 const POKE_API_URL := "https://pokeapi.co/api/v2/"
@@ -52,12 +56,30 @@ func reset_data() -> void:
 	_reset_pokemon()
 
 
+func _set_loading_mode(toggle: bool) -> void:
+	var loading_text = '?'
+
+	if is_evolving:
+		poke_texture_mask.set_visible(toggle)
+		loading_text = 'Il évolue !'
+	else:
+		texture_rect.set_visible(!toggle)
+		loading_texture_rect.set_visible(toggle)
+
+	if toggle:
+		_change_pokemon_label(loading_text)
+	else:
+		is_evolving = false
+
+
 func _generate_random_pokemon() -> void:
 	pokemon_number = rng.randi_range(1, 1025)
 	_generate_targeted_pokemon(pokemon_number)
 
 
 func _generate_targeted_pokemon(pokemon_id: int) -> void:
+	_set_loading_mode(true)
+	evolution_infos_dict = {}
 	get_pokemon_request.request(POKE_API_URL + "pokemon/" + str(pokemon_id))
 	get_pokemon_species_request.request(POKE_API_URL + "pokemon-species/" + str(pokemon_id))
 
@@ -74,14 +96,15 @@ func _on_pokemon_pic_request_completed(_result, response_code, _headers, body):
 	if response_code == HTTPClient.RESPONSE_OK:
 		var image = Image.new()
 		var resultat_chargement = image.load_png_from_buffer(body)
-		_change_pokemon_label(current_pokemon_name) # pour avoir le nom qui apparaît en même temps que l'image
 		if resultat_chargement != OK:
 			print_debug("Erreur lors du chargement de l'image du pokémon " + str(pokemon_number))
 		else:
 			var texture = ImageTexture.create_from_image(image)
 			texture.set_size_override(Vector2i(200, 200))
-			
 			texture_rect.texture = texture
+
+			_change_pokemon_label(current_pokemon_name) # pour avoir le nom qui apparaît en même temps que l'image
+			_set_loading_mode(false)
 	else:
 		print_debug("Erreur lors de la récupération de l'image du pokémon " + str(pokemon_number))
 	
@@ -129,9 +152,9 @@ func _on_poke_parenting_events_points_emitted(nb_points: int) -> void:
 	var old_level = level
 	level += nb_points
 	if (old_level == 0 && level > 0):
-		_generate_random_pokemon()
-		# pokemon_number = 7
-		# _generate_targeted_pokemon(pokemon_number)
+		# _generate_random_pokemon()
+		pokemon_number = 2
+		_generate_targeted_pokemon(pokemon_number)
 	elif level == 0:
 		_reset_pokemon()
 	elif level > 100:
@@ -143,14 +166,17 @@ func _on_poke_parenting_events_points_emitted(nb_points: int) -> void:
 		var niveaux_evol = evolution_infos_dict.keys()
 		var niveau_pertinent = 0
 		for niv in niveaux_evol:
-			if level >= niv:
+			if niv == null:
+				niveau_pertinent = 0
+			elif level >= niv:
 				niveau_pertinent = niv
-		# print(niveau_pertinent)
+		print_debug(niveau_pertinent)
 
 		if (niveau_pertinent > 0):
 			evolution_pokemon_number = evolution_infos_dict.get(niveau_pertinent)
-			if evolution_pokemon_number != pokemon_number:
+			if evolution_pokemon_number != pokemon_number && _is_not_in_upper_evolution_tree():
 				pokemon_number = evolution_pokemon_number
+				is_evolving = true
 				_generate_targeted_pokemon(evolution_pokemon_number)
 
 
@@ -164,6 +190,14 @@ func _on_poke_parenting_events_points_emitted(nb_points: int) -> void:
 	# 	# regarder ensuite les conditions d'évol (niveau, pierre, etc.) et ne faire qu'une évol à la fois
 
 	# 	# if level < old_level : faire éventuellement désévoluer
+
+func _is_not_in_upper_evolution_tree() -> bool:
+	var result := true
+	for evolution_infos_dict_key in evolution_infos_dict.keys():
+		if evolution_infos_dict.get(evolution_infos_dict_key) == pokemon_number && level < evolution_infos_dict_key:
+			return false
+
+	return result
 
 
 func _reset_pokemon():
