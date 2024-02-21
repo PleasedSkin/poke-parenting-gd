@@ -103,7 +103,7 @@ func _on_pokemon_pic_request_completed(_result, response_code, _headers, body):
 			texture.set_size_override(Vector2i(200, 200))
 			texture_rect.texture = texture
 
-			_change_pokemon_label(current_pokemon_name) # pour avoir le nom qui apparaît en même temps que l'image
+			#_change_pokemon_label(current_pokemon_name) # pour avoir le nom qui apparaît en même temps que l'image
 			_set_loading_mode(false)
 	else:
 		print_debug("Erreur lors de la récupération de l'image du pokémon " + str(pokemon_number))
@@ -113,8 +113,8 @@ func _on_pokemon_species_request_completed(_result, response_code, _headers, bod
 	if response_code == HTTPClient.RESPONSE_OK:
 		var pokemon_species = JSON.parse_string(body.get_string_from_utf8())
 		var corresponding_item = pokemon_species["names"].filter(func(pkmName): return pkmName.language.name == "fr")[0]
-		# _change_pokemon_label(corresponding_item.name)
 		current_pokemon_name = corresponding_item.name
+		_change_pokemon_label(current_pokemon_name)
 		var evolution_chain_url = pokemon_species["evolution_chain"]["url"]
 		get_pokemon_evolution_infos_request.request(evolution_chain_url)
 	else:
@@ -152,9 +152,9 @@ func _on_poke_parenting_events_points_emitted(nb_points: int) -> void:
 	var old_level = level
 	level += nb_points
 	if (old_level == 0 && level > 0):
-		# _generate_random_pokemon()
-		pokemon_number = 2
-		_generate_targeted_pokemon(pokemon_number)
+		_generate_random_pokemon()
+		# pokemon_number = 2
+		# _generate_targeted_pokemon(pokemon_number)
 	elif level == 0:
 		_reset_pokemon()
 	elif level > 100:
