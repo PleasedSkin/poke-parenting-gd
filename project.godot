@@ -17,7 +17,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-PokeParentingEvents="*res://autoload/pokeParentingEvents.gd"
+PokeParentingEvents="*res://autoload/poke_parenting_events.gd"
 
 [display]
 

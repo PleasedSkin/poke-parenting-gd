@@ -63,7 +63,7 @@ grow_vertical = 0
 theme_override_constants/separation = 25
 alignment = 1
 
-[node name="Button" type="Button" parent="CanvasLayer/ColorRect/VBoxContainer"]
+[node name="NewGameButton" type="Button" parent="CanvasLayer/ColorRect/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -71,10 +71,11 @@ theme_override_fonts/font = ExtResource("3_rsjic")
 theme_override_font_sizes/font_size = 30
 text = "Nouvelle  partie	"
 
-[node name="Button2" type="Button" parent="CanvasLayer/ColorRect/VBoxContainer"]
+[node name="LoadGameButton" type="Button" parent="CanvasLayer/ColorRect/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_rsjic")
 theme_override_font_sizes/font_size = 25
 text = "Continuer"
 
-[connection signal="pressed" from="CanvasLayer/ColorRect/VBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/ColorRect/VBoxContainer/NewGameButton" to="." method="_on_new_game_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/ColorRect/VBoxContainer/LoadGameButton" to="." method="_on_load_game_button_pressed"]

@@ -23,19 +23,31 @@ var evolution_details
 var evolution_infos_dict = {} # dico clé niveau d'évol et valeur num pokémon d'évol
 var current_pokemon_name: String
 
-var level := 0
-var stars_amount := 0
+var pokemon_number: int
+var level: int:
+	get:
+		return level
+	set(value):
+		level = value
+		_update_level_ui_data()
+var stars_amount: int:
+	get:
+		return stars_amount
+	set(value):
+		stars_amount = value
+		_update_stars_amount_ui_data()
 
 var is_evolving := false
 
 
 const POKE_API_URL := "https://pokeapi.co/api/v2/"
+const DEFAULT_SAVE_FILE = "user://savegamepp.save"
 
-var pokemon_number: int
 
 var rng = RandomNumberGenerator.new()
 
 var main_menu
+
 
 func _ready() -> void:
 	main_menu = preload("res://ui/menu_principal.tscn").instantiate()
@@ -46,11 +58,13 @@ func _ready() -> void:
 	get_pokemon_evolution_infos_request.request_completed.connect(_on_pokemon_evolution_infos_request_completed)
 	PokeParentingEvents.points_emitted.connect(_on_poke_parenting_events_points_emitted)
 	PokeParentingEvents.main_item_selected.connect(_on_poke_parenting_events_main_item_selected)
-	PokeParentingEvents.reset_required.connect(reset_data)
-	#_generate_random_pokemon()
+
+	if PokeParentingEvents.load_required:
+		_load_game()
 
 
-func reset_data() -> void:
+func _reset_data() -> void:
+	print("RESET")
 	level = 0
 	stars_amount = 0
 	_reset_pokemon()
@@ -161,7 +175,6 @@ func _on_poke_parenting_events_points_emitted(nb_points: int) -> void:
 		_reset_pokemon()
 		level = 0
 		stars_amount += 1
-		stars_amount_label.text = "x " + str(stars_amount)
 	else:
 		var niveaux_evol = evolution_infos_dict.keys()
 		var niveau_pertinent = 0
@@ -181,7 +194,8 @@ func _on_poke_parenting_events_points_emitted(nb_points: int) -> void:
 
 
 	level = clampi(level, 0, 100) 
-	pokemon_level_label.text = "[center]Niveau : " + str(level) + "[/center]"
+
+	_save_game()
 	
 
 	# else:
@@ -190,6 +204,13 @@ func _on_poke_parenting_events_points_emitted(nb_points: int) -> void:
 	# 	# regarder ensuite les conditions d'évol (niveau, pierre, etc.) et ne faire qu'une évol à la fois
 
 	# 	# if level < old_level : faire éventuellement désévoluer
+
+func _update_level_ui_data():
+	pokemon_level_label.text = "[center]Niveau : " + str(level) + "[/center]"
+
+func _update_stars_amount_ui_data():
+	stars_amount_label.text = "x " + str(stars_amount)
+
 
 func _is_not_in_upper_evolution_tree() -> bool:
 	var result := true
@@ -223,3 +244,49 @@ func _on_retour_pressed() -> void:
 	menu_principal.visible = true
 	menu_principal.process_mode = Node.PROCESS_MODE_INHERIT
 	bouton_retour.visible = false
+
+
+
+func save():
+	var save_dict = {
+		"pokemon_number": pokemon_number,
+		"level": level,
+		"stars_amount": stars_amount
+	}
+
+	return save_dict
+
+func _save_game() -> void:
+	var save_game = FileAccess.open(DEFAULT_SAVE_FILE, FileAccess.WRITE)
+
+	var json_string = JSON.stringify(save())
+
+	save_game.store_line(json_string)
+
+
+func _load_game():
+	print("LOADING")
+	if not FileAccess.file_exists(DEFAULT_SAVE_FILE):
+		return
+
+	var save_game = FileAccess.open(DEFAULT_SAVE_FILE, FileAccess.READ)
+	while save_game.get_position() < save_game.get_length():
+		var json_string = save_game.get_line()
+
+		# Creates the helper class to interact with JSON
+		var json = JSON.new()
+
+		# Check if there is any error while parsing the JSON string, skip in case of failure
+		var parse_result = json.parse(json_string)
+		if not parse_result == OK:
+			print("JSON Parse Error: ", json.get_error_message(), " in ", json_string, " at line ", json.get_error_line())
+			continue
+
+		# Get the data from the JSON object
+		var node_data = json.get_data()
+
+		level = node_data["level"]
+		stars_amount = node_data["stars_amount"]
+		pokemon_number = node_data["pokemon_number"]
+		_on_poke_parenting_events_points_emitted(0)
+		_generate_targeted_pokemon(pokemon_number)
