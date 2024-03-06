@@ -1,9 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://dbsbnb15atvsc"]
+[gd_scene load_steps=6 format=3 uid="uid://dbsbnb15atvsc"]
 
 [ext_resource type="Texture2D" uid="uid://ucp3wi6tqycq" path="res://assets/pixel-art-pokeball.png" id="1_3hxoj"]
 [ext_resource type="Texture2D" uid="uid://dvtwhemkycamf" path="res://assets/pokeLogo.png" id="1_4st16"]
 [ext_resource type="Script" path="res://main_menu.gd" id="1_wm0sq"]
-[ext_resource type="FontFile" uid="uid://caw8nx02wlaer" path="res://assets/fonts/pokemon_pixel_font.ttf" id="3_rsjic"]
+[ext_resource type="FontFile" uid="uid://bhb54388fyun1" path="res://assets/fonts/Ohrenstead.ttf" id="4_ncu3f"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n8xta"]
+bg_color = Color(0.317647, 0.65098, 0.447059, 1)
 
 [node name="MainMenu" type="Node2D"]
 script = ExtResource("1_wm0sq")
@@ -64,16 +67,18 @@ theme_override_constants/separation = 25
 alignment = 1
 
 [node name="NewGameButton" type="Button" parent="CanvasLayer/ColorRect/VBoxContainer"]
+custom_minimum_size = Vector2(150, 35)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_fonts/font = ExtResource("3_rsjic")
+theme_override_fonts/font = ExtResource("4_ncu3f")
 theme_override_font_sizes/font_size = 30
-text = "Nouvelle  partie	"
+theme_override_styles/normal = SubResource("StyleBoxFlat_n8xta")
+text = "Nouvelle partie	"
 
 [node name="LoadGameButton" type="Button" parent="CanvasLayer/ColorRect/VBoxContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("3_rsjic")
+theme_override_fonts/font = ExtResource("4_ncu3f")
 theme_override_font_sizes/font_size = 25
 text = "Continuer"
 

@@ -38,6 +38,7 @@ var stars_amount: int:
 		_update_stars_amount_ui_data()
 
 var is_evolving := false
+var is_shiny := false
 
 
 const POKE_API_URL := "https://pokeapi.co/api/v2/"
@@ -91,9 +92,12 @@ func _generate_random_pokemon() -> void:
 	_generate_targeted_pokemon(pokemon_number)
 
 
-func _generate_targeted_pokemon(pokemon_id: int) -> void:
+func _generate_targeted_pokemon(pokemon_id: int, from_loading = false) -> void:
 	_set_loading_mode(true)
 	evolution_infos_dict = {}
+	if !is_evolving && !from_loading:
+		is_shiny = false
+
 	get_pokemon_request.request(POKE_API_URL + "pokemon/" + str(pokemon_id))
 	get_pokemon_species_request.request(POKE_API_URL + "pokemon-species/" + str(pokemon_id))
 
@@ -101,7 +105,14 @@ func _on_pokemon_request_completed(_result, response_code, _headers, body):
 	if response_code == HTTPClient.RESPONSE_OK:
 		var pokemon = JSON.parse_string(body.get_string_from_utf8())
 		# print(pokemon["name"])
-		get_pokemon_pic_request.request(pokemon["sprites"]["front_default"])
+		if !is_evolving:
+			var shiny_luck := rng.randi_range(1, 100) % 100 == 0
+			if shiny_luck:
+				is_shiny = true
+				print_debug("Quelle chance, un shiny !")
+
+		var sprite_field = "front_shiny" if is_shiny else "front_default"
+		get_pokemon_pic_request.request(pokemon["sprites"][sprite_field])
 	else:
 		print_debug("Erreur lors de la récupération du pokémon " + str(pokemon_number))
 
@@ -251,7 +262,8 @@ func save():
 	var save_dict = {
 		"pokemon_number": pokemon_number,
 		"level": level,
-		"stars_amount": stars_amount
+		"stars_amount": stars_amount,
+		"is_shiny": is_shiny
 	}
 
 	return save_dict
@@ -288,5 +300,6 @@ func _load_game():
 		level = node_data["level"]
 		stars_amount = node_data["stars_amount"]
 		pokemon_number = node_data["pokemon_number"]
+		is_shiny = node_data["is_shiny"]
 		_on_poke_parenting_events_points_emitted(0)
-		_generate_targeted_pokemon(pokemon_number)
+		_generate_targeted_pokemon(pokemon_number, true)

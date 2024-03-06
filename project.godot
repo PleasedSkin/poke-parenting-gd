@@ -21,8 +21,8 @@ PokeParentingEvents="*res://autoload/poke_parenting_events.gd"
 
 [display]
 
-window/size/viewport_width=315
-window/size/viewport_height=650
+window/size/viewport_width=480
+window/size/viewport_height=720
 
 [file_customization]
 

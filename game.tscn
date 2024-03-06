@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://Game.gd" id="1_g6b4v"]
 [ext_resource type="Texture2D" uid="uid://cqfiwoflwp1rh" path="res://assets/star.png" id="2_kn6ae"]
+[ext_resource type="FontFile" uid="uid://bhb54388fyun1" path="res://assets/fonts/Ohrenstead.ttf" id="2_kvj5d"]
 [ext_resource type="Texture2D" uid="uid://cxb82psgxjvj3" path="res://assets/pokemon-egg.png" id="2_o8u7r"]
-[ext_resource type="FontFile" uid="uid://caw8nx02wlaer" path="res://assets/fonts/pokemon_pixel_font.ttf" id="2_v3thp"]
 [ext_resource type="PackedScene" uid="uid://2acw507ujmqg" path="res://ui/menu_principal.tscn" id="3_cuckw"]
 [ext_resource type="Texture2D" uid="uid://dsgf4ba1d0ivf" path="res://assets/animated_pokeball_1.png" id="5_qka8j"]
 [ext_resource type="Texture2D" uid="uid://c2y7cbg23y07r" path="res://assets/animated_pokeball_2.png" id="6_5owty"]
@@ -63,7 +63,7 @@ custom_minimum_size = Vector2(500, 70)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_fonts/normal_font = ExtResource("2_v3thp")
+theme_override_fonts/normal_font = ExtResource("2_kvj5d")
 theme_override_font_sizes/normal_font_size = 50
 bbcode_enabled = true
 text = "[center]Oeuf[/center]"
@@ -79,7 +79,7 @@ texture = ExtResource("2_kn6ae")
 [node name="NbEtoiles" type="Label" parent="CanvasLayer/ColorRect/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_v3thp")
+theme_override_fonts/font = ExtResource("2_kvj5d")
 theme_override_font_sizes/font_size = 20
 text = "x 0	"
 
@@ -121,7 +121,7 @@ custom_minimum_size = Vector2(120, 30)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
-theme_override_fonts/normal_font = ExtResource("2_v3thp")
+theme_override_fonts/normal_font = ExtResource("2_kvj5d")
 theme_override_font_sizes/normal_font_size = 30
 bbcode_enabled = true
 text = "[center]Niveau : 0[/center]"
@@ -139,6 +139,7 @@ text = "Retry"
 
 [node name="Retour" type="Button" parent="CanvasLayer/ColorRect/VBoxContainer"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 24

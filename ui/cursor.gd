@@ -4,11 +4,13 @@ extends TextureRect
 @export var cursor_offset: Vector2
 
 @onready var menu_parent := get_node(menu_parent_path)
+@onready var animation_player = $AnimationPlayer
 
 var cursor_index: int = 0
 var nb_elements: int = 0
 
 func _ready() -> void:
+	animation_player.play("juice")
 	if menu_parent != null:
 		nb_elements = menu_parent.get_child_count()
 		for elt in menu_parent.get_children():
@@ -84,10 +86,9 @@ func set_cursor_for_menu_item(menu_item: Control):
 		return
 	
 	var position = menu_item.global_position
-	var size = menu_item.size
+	var menu_item_size = menu_item.size
 	
-	global_position = Vector2(position.x, position.y + size.y / 2.0) - (size / 2.0) - cursor_offset
-	
+	global_position = Vector2(position.x - menu_item_size.x / 2.0, position.y) #- (menu_item_size / 2.0) # + size.y / 2.0) - (size / 2.0) - cursor_offset
 
 func get_menu_item_at_name(name : String) -> Control:
 	if menu_parent == null:
