@@ -25,3 +25,6 @@ text = "[center]Maîtrise[/center]"
 layout_mode = 2
 theme_override_colors/default_color = Color(0.0509804, 0.376471, 0.247059, 1)
 text = "[center]Modèle[/center]"
+
+[node name="Cursor" parent="." index="1"]
+cursor_offset = Vector2(-20, 0)

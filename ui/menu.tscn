@@ -39,4 +39,4 @@ columns = 2
 [node name="Cursor" parent="." instance=ExtResource("2_pwquh")]
 layout_mode = 0
 menu_parent_path = NodePath("../GridBoxContainer")
-cursor_offset = Vector2(-5, 0)
+cursor_offset = Vector2(-20, 0)

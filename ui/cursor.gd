@@ -1,10 +1,11 @@
-extends TextureRect
+extends CenterContainer
 
 @export var menu_parent_path: NodePath
 @export var cursor_offset: Vector2
 
 @onready var menu_parent := get_node(menu_parent_path)
 @onready var animation_player = $AnimationPlayer
+@onready var texture_rect = $TextureRect
 
 var cursor_index: int = 0
 var nb_elements: int = 0
@@ -85,10 +86,10 @@ func set_cursor_for_menu_item(menu_item: Control):
 	if menu_item == null:
 		return
 	
-	var position = menu_item.global_position
-	var menu_item_size = menu_item.size
+	var position: Vector2 = menu_item.global_position
+	var menu_item_size: Vector2 = menu_item.size
 	
-	global_position = Vector2(position.x - menu_item_size.x / 2.0, position.y) #- (menu_item_size / 2.0) # + size.y / 2.0) - (size / 2.0) - cursor_offset
+	global_position = Vector2(position.x - menu_item_size.x / 2.0, position.y + (menu_item_size.y / 2.0) - (texture_rect.size.y / 2.0)) - cursor_offset
 
 func get_menu_item_at_name(name : String) -> Control:
 	if menu_parent == null:
