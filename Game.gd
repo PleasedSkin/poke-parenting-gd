@@ -13,7 +13,7 @@ extends Node2D
 @onready var stars_amount_label = %NbEtoiles
 @onready var menu_principal = %MenuPrincipal
 @onready var main_container = %VBoxContainer
-@onready var bouton_retour = %Retour
+# @onready var bouton_retour = %Retour
 var current_special_menu
 var default_pokemon_sprite
 const default_pokemon_name := "Oeuf"
@@ -59,6 +59,7 @@ func _ready() -> void:
 	get_pokemon_evolution_infos_request.request_completed.connect(_on_pokemon_evolution_infos_request_completed)
 	PokeParentingEvents.points_emitted.connect(_on_poke_parenting_events_points_emitted)
 	PokeParentingEvents.main_item_selected.connect(_on_poke_parenting_events_main_item_selected)
+	PokeParentingEvents.return_item_selected.connect(_on_retour_pressed)
 
 	if PokeParentingEvents.load_required:
 		_load_game()
@@ -245,7 +246,9 @@ func _on_poke_parenting_events_main_item_selected(name: String):
 	menu_principal.add_sibling(current_special_menu)
 	# main_container.add_child(current_special_menu)
 	current_special_menu.global_position = pos
-	bouton_retour.visible = true
+	# var return_item = load("res://ui/item_retour.tscn").instantiate()
+	# current_special_menu.add_item_to_menu(return_item)
+	# #bouton_retour.visible = true
 
 func _on_retour_pressed() -> void:
 	# var pos = current_special_menu.global_position
@@ -254,7 +257,7 @@ func _on_retour_pressed() -> void:
 	# main_menu.global_position = pos
 	menu_principal.visible = true
 	menu_principal.process_mode = Node.PROCESS_MODE_INHERIT
-	bouton_retour.visible = false
+	# bouton_retour.visible = false
 
 
 

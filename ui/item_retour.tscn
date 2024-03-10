@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://b8gflnsl6mmbu"]
+
+[ext_resource type="PackedScene" uid="uid://dk2ljbbj8kipb" path="res://ui/menu_principal_item.tscn" id="1_ganw0"]
+[ext_resource type="Script" path="res://ui/item_retour.gd" id="2_bxd7j"]
+
+[node name="ItemRetour" instance=ExtResource("1_ganw0")]
+text = "[center]Retour[/center]"
+script = ExtResource("2_bxd7j")

@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://chrxrpbcsudtr"]
+[gd_scene load_steps=4 format=3 uid="uid://chrxrpbcsudtr"]
 
 [ext_resource type="Texture2D" uid="uid://chrhsdipryos6" path="res://assets/menu_box_1.png" id="1_kiprr"]
+[ext_resource type="Script" path="res://ui/menu.gd" id="2_egyc7"]
 [ext_resource type="PackedScene" uid="uid://cedewfsg7uery" path="res://ui/cursor.tscn" id="2_pwquh"]
 
 [node name="Menu" type="NinePatchRect"]
@@ -18,6 +19,7 @@ patch_margin_left = 6
 patch_margin_top = 6
 patch_margin_right = 6
 patch_margin_bottom = 6
+script = ExtResource("2_egyc7")
 
 [node name="GridBoxContainer" type="GridContainer" parent="."]
 layout_mode = 1

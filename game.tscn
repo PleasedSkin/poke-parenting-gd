@@ -129,6 +129,7 @@ text = "[center]Niveau : 0[/center]"
 [node name="MenuPrincipal" parent="CanvasLayer/ColorRect/VBoxContainer" instance=ExtResource("3_cuckw")]
 unique_name_in_owner = true
 layout_mode = 2
+script = null
 
 [node name="Button" type="Button" parent="CanvasLayer/ColorRect/VBoxContainer"]
 visible = false

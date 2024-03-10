@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bp0nwdbvyg7wt"]
+[gd_scene load_steps=8 format=3 uid="uid://bp0nwdbvyg7wt"]
 
 [ext_resource type="PackedScene" uid="uid://chrxrpbcsudtr" path="res://ui/menu.tscn" id="1_ki8uq"]
 [ext_resource type="PackedScene" uid="uid://b806phwvs147f" path="res://ui/menu_categorise_item.tscn" id="2_yvgml"]
@@ -6,6 +6,7 @@
 [ext_resource type="Resource" uid="uid://2oqs21elimiq" path="res://resources/insulte_ou_grimace.tres" id="4_1w00c"]
 [ext_resource type="Resource" uid="uid://dli778c4k08fa" path="res://resources/mot_ecole.tres" id="6_ljp32"]
 [ext_resource type="Resource" uid="uid://cf8t7ttndxjco" path="res://resources/ingerance.tres" id="6_ycibf"]
+[ext_resource type="PackedScene" uid="uid://b8gflnsl6mmbu" path="res://ui/item_retour.tscn" id="7_7pd34"]
 
 [node name="Menu" instance=ExtResource("1_ki8uq")]
 
@@ -30,3 +31,6 @@ custom_minimum_size = Vector2(72, 30)
 layout_mode = 2
 theme_override_colors/default_color = Color(0.666667, 0, 0.156863, 1)
 comportement = ExtResource("6_ljp32")
+
+[node name="ItemRetour" parent="GridBoxContainer" index="4" instance=ExtResource("7_7pd34")]
+layout_mode = 2

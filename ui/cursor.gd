@@ -16,6 +16,11 @@ func _ready() -> void:
 		nb_elements = menu_parent.get_child_count()
 		for elt in menu_parent.get_children():
 			elt.selected_by_click.connect(set_cursor_from_name)
+			
+func add_element(item):
+	nb_elements += 1
+	item.selected_by_click.connect(set_cursor_from_name)
+
 
 func _process(delta):
 	var input := Vector2.ZERO
