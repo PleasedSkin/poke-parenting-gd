@@ -31,4 +31,5 @@ theme_override_colors/default_color = Color(0.0509804, 0.376471, 0.247059, 1)
 comportement = ExtResource("6_qbona")
 
 [node name="ItemRetour" parent="GridBoxContainer" index="4" instance=ExtResource("7_5ga1k")]
+visible = false
 layout_mode = 2

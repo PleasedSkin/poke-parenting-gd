@@ -11,5 +11,5 @@ func cursor_select():
 
 
 func _on_gui_input(event: InputEvent) -> void:
-	if (event is InputEventMouseButton && event.pressed && event.button_index == 1):
+	if (event is InputEventMouseButton && event.pressed && event.button_index == MOUSE_BUTTON_LEFT):
 		emit_signal("selected_by_click", name)

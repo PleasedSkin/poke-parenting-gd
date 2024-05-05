@@ -64,6 +64,8 @@ func _ready() -> void:
 	if PokeParentingEvents.load_required:
 		_load_game()
 
+	_on_poke_parenting_events_main_item_selected("modele")
+	
 
 func _reset_data() -> void:
 	print("RESET")

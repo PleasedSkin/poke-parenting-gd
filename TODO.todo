@@ -11,10 +11,12 @@ Polish
 - curseur à revoir avec animation (flip)
 - surbrillance texte quand sélectionné et quand action réalisée + son associé
 - style bouton à revoir
-- police à revoir (pixel)
+✅ police à revoir (pixel)
 - animation lors de l'évolution et de la désévolution => important car la requête est plutôt longue
-- animation lors du gain d'une étoile !
+- animation lors du gain d'une étoile avec du glow !
 - ajouter du son !
+- refacto pour séparer le gestionnaire de requêtes du reste
+- ne pas proposer les malus, se concentrer sur les bonus
 
 
 Site pour le logo : https://fontmeme.com/pokemon-font/
